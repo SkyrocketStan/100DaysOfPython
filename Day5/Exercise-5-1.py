@@ -27,7 +27,10 @@ for n in range(0, len(student_heights)):
 
 # Write your code below this row 👇
 total_height = 0
+total_len = 0
 for h in student_heights:
     total_height += h
+    total_len += 1
 
-print(round(total_height / len(student_heights)))
+
+print(round(total_height / total_len))
