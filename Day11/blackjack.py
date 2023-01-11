@@ -71,6 +71,8 @@ def play_game():
     user_cards = []
     computer_cards = []
     is_game_over = False
+    computer_score = None
+    user_score = None
 
     for _ in range(2):
         user_cards.append(deal_card())
@@ -109,7 +111,8 @@ def play_game():
 
     print(f"   Your final hand: {user_cards}, final score: {user_score}")
     print(
-        f"   Computer's final hand: {computer_cards}, final score: {computer_score}")
+        f"   Computer's final hand: {computer_cards},\
+         final score: {computer_score}")
     print(compare(user_score, computer_score))
 
 
