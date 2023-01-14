@@ -6,8 +6,8 @@ from game_data import data
 print(logo)
 
 
-def get_competitors(game_data):
-    return random.sample(game_data, 2)
+def get_competitors():
+    return random.sample(data, 2)
 
 
 def print_competitor(letter, thing: dict):
@@ -39,14 +39,24 @@ def print_lose_score(score):
     print(f"Sorry, that's wrong. Final score: {score}")
 
 
+def get_second_competitor(old_choice: dict) -> dict:
+    while True:
+        new_choice = random.choice(data)
+        if new_choice != old_choice:
+            return new_choice
+
+
 def game():
     game_over = False
     score = 0
+    competitors = get_competitors()
+    the_first: dict = competitors[0]
+    the_second: dict = competitors[1]
+
     while not game_over:
-        # get two random competitors
-        competitors = get_competitors(data)
-        the_first: dict = competitors[0]
-        the_second: dict = competitors[1]
+        if score > 0:
+            the_first = the_second
+            the_second = get_second_competitor(the_first)
 
         # print competitors
         print_competitors(the_first, the_second)
