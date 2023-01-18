@@ -12,4 +12,14 @@ def random_color():
     color = (r, g, b)
     return color
 
+
 ########### Challenge 5 - Spirograph ########
+screen = t.Screen()
+tim.speed(0)
+
+for _ in range(36):
+    tim.color(random_color())
+    tim.circle(100)
+    tim.right(10)
+
+screen.exitonclick()
