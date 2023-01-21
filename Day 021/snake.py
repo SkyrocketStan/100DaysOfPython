@@ -9,18 +9,25 @@ RIGHT = 0
 
 class Snake:
     def __init__(self):
-        pos_x = 0
         self.body = []
-        for _ in range(3):
-            t = Turtle("square")
-            t.color("white")
-            t.penup()
-            t.setx(pos_x)
-            self.body.append(t)
-            pos_x -= DISTANCE
+        self.create_snake()
         self.head = self.body[0]
-        # self.head.setheading(270)
-        # turtle.mode("standard")
+
+    def create_snake(self):
+        pos_x = 0
+        for _ in range(3):
+            self.add_body_segment((pos_x, 0))
+            pos_x -= DISTANCE
+
+    def add_body_segment(self, position):
+        t = Turtle("square")
+        t.color("white")
+        t.penup()
+        t.goto(position)
+        self.body.append(t)
+
+    def extend_body(self):
+        self.add_body_segment(self.body[-1].position())
 
     def move(self):
         for i in range(len(self.body) - 1, 0, -1):

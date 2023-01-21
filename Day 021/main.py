@@ -48,6 +48,7 @@ while not game_over:
     if snake.head.distance(food) <= EATING_DISTANCE:
         food.refresh()
         score.update_score()
+        snake.extend_body()
 
     if snake.head.xcor() > screen_border_positive_x or snake.head.xcor() < \
             screen_border_negative_x or snake.head.ycor() > \
