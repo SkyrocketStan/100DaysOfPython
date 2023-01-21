@@ -12,7 +12,6 @@ class Scoreboard(Turtle):
         self.setpos(0, 250)
         self.penup()
         self.speed(0)
-        self.update_score()
         self.hideturtle()
         self.update_text()
 
