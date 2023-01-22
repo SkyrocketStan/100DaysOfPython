@@ -8,6 +8,7 @@ from scoreboard import Scoreboard
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 WALL_DISTANCE = 30
+SPEED_INCREASE = 0.001
 
 r_paddle_x = (SCREEN_WIDTH // 2) - WALL_DISTANCE
 l_paddle_x = r_paddle_x * -1
@@ -41,10 +42,17 @@ screen.onkey(quit_game, "q")
 
 screen_ceiling = SCREEN_HEIGHT // 2 - WALL_DISTANCE
 screen_floor = SCREEN_HEIGHT // -2 + WALL_DISTANCE
+
+sleep_timer = 0.1
+
 while on_game:
     screen.update()
     ball.move()
-    time.sleep(0.1)
+    try:
+        time.sleep(ball.move_speed)
+    except ValueError:
+        print("Max speed reached")
+
     # Ceiling and floor collisions
     if ball.ycor() >= screen_ceiling or ball.ycor() <= screen_floor:
         ball.bounce_y()
