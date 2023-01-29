@@ -9,6 +9,8 @@ def generate_password():
     password = password_generator.pass_gen()
     password_entry.delete(0, END)
     password_entry.insert(0, password)
+    window.clipboard_clear()
+    window.clipboard_append(password)
 
 
 # SAVE PASSWORD
