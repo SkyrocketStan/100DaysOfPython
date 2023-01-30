@@ -1,3 +1,4 @@
+import json
 from tkinter import *
 from tkinter import messagebox
 
@@ -18,6 +19,7 @@ def save_password():
     website = website_entry.get()
     email = email_entry.get()
     password = password_entry.get()
+    new_data = {website: {"email": email, "password": password, }}
 
     if not website or not email or not password:
         messagebox.showwarning(message="Do not leave empty fields")
@@ -29,10 +31,19 @@ def save_password():
                                            f"Email: {email}\n"
                                            f"Password: {password}")
     if is_ok:
-        with open("password_unsafe.txt", mode="a") as file:
-            file.write(f"{website}, {email}, {password}\n")
-            website_entry.delete(0, END)
-            password_entry.delete(0, END)
+        try:
+            with open("password.json", mode="r") as file:
+                data = json.load(file)
+
+        except FileNotFoundError:
+            with open("password.json", mode="w") as file:
+                json.dump(new_data, file, indent=4)
+        else:
+            data.update(new_data)
+
+        # clear fields in form
+        website_entry.delete(0, END)
+        password_entry.delete(0, END)
 
 
 # UI SETUP
