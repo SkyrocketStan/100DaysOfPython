@@ -41,6 +41,12 @@ def make_pixel():
     print(response.text)
 
 
+def delete_user():
+    delete_url = f"{PIXELA_API_URL}/{USERNAME}"
+    response = requests.delete(delete_url, headers=HEADERS)
+    print(response.text)
+
 # make_user()
 # make_graph()
-make_pixel()
+# make_pixel()
+# delete_user()
