@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import requests
 
 PIXELA_API_TOKEN = "wVcvGqkpXFNvHK5o7aCtsUHpD"
@@ -30,8 +32,9 @@ def make_graph():
 
 
 def make_pixel():
+    today = datetime.now().strftime("%Y%m%d")
     pixel_endpoint = f"{GRAPH_ENDPOINT}/whiskeys"
-    pixel_data = {"date": "20220206", "quantity": "1"}
+    pixel_data = {"date": today, "quantity": "0"}
     response = requests.post(url=pixel_endpoint,
                              json=pixel_data,
                              headers=HEADERS)
