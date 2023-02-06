@@ -5,6 +5,7 @@ HEADERS_TOKEN = {"X-USER-TOKEN": PIXELA_API_TOKEN}
 PIXELA_API_URL = "https://pixe.la/v1/users"
 USERNAME = "anonymous101284"
 HEADERS = {"X-USER-TOKEN": PIXELA_API_TOKEN}
+GRAPH_ENDPOINT = f"{PIXELA_API_URL}/{USERNAME}/graphs"
 
 
 def make_user():
@@ -16,11 +17,7 @@ def make_user():
     print(response.text)
 
 
-# make_user()
-
-
 def make_graph():
-    graph_endpoint = f"{PIXELA_API_URL}/{USERNAME}/graphs"
     graph_config = {
         "id": "whiskeys",
         "name": "Whiskey shots",
@@ -28,8 +25,19 @@ def make_graph():
         "type": "int",
         "color": "ajisai"
     }
-    response = requests.post(graph_endpoint, json=graph_config, headers=HEADERS)
+    response = requests.post(GRAPH_ENDPOINT, json=graph_config, headers=HEADERS)
     print(response.text)
 
 
-make_graph()
+def make_pixel():
+    pixel_endpoint = f"{GRAPH_ENDPOINT}/whiskeys"
+    pixel_data = {"date": "20220206", "quantity": "1"}
+    response = requests.post(url=pixel_endpoint,
+                             json=pixel_data,
+                             headers=HEADERS)
+    print(response.text)
+
+
+# make_user()
+# make_graph()
+make_pixel()
