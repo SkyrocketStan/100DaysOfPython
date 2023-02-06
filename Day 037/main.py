@@ -16,4 +16,20 @@ def make_user():
     print(response.text)
 
 
-make_user()
+# make_user()
+
+
+def make_graph():
+    graph_endpoint = f"{PIXELA_API_URL}/{USERNAME}/graphs"
+    graph_config = {
+        "id": "whiskeys",
+        "name": "Whiskey shots",
+        "unit": "shots",
+        "type": "int",
+        "color": "ajisai"
+    }
+    response = requests.post(graph_endpoint, json=graph_config, headers=HEADERS)
+    print(response.text)
+
+
+make_graph()
