@@ -36,19 +36,16 @@ for destination_code in destinations:
         from_time=tomorrow,
         to_time=six_month_from_today
     )
-
-    ################
     if flight is None:
         continue
-    ################
 
     if flight.price < destinations[destination_code]["price"]:
-        users = data_manager.get_customer_emails()
-        emails = [row["email"] for row in users]
-        names = [row["firstName"] for row in users]
-        message = f"Low price alert! Only {flight.price}GBP to fly from {flight.origin_city}-{flight.origin_airport} to {flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}."
-        if flight.stop_overs > 0:
-            message += f"\n\nFlight has {flight.stop_overs}, via {flight.via_city}."
-        link = f"https://www.google.co.uk/flights?hl=en#flt={flight.origin_airport}.{flight.destination_airport}.{flight.out_date}*{flight.destination_airport}.{flight.origin_airport}.{flight.return_date}"
+        message = f"Low price alert! Only £{flight.price} to fly from {flight.origin_city}-{flight.origin_airport} to {flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}."
 
-        notification_manager.send_emails(emails, message, link)
+        ######################
+        if flight.stop_overs > 0:
+            message += f"\nFlight has {flight.stop_overs} stop over, via {flight.via_city}."
+            print(message)
+        #######################
+
+        notification_manager.send_sms(message)
