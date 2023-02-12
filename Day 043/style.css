@@ -1,0 +1,22 @@
+.bacon-img {
+    width: 20%;
+    height: auto;
+}
+
+h1 {
+    color: red
+}
+
+
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    border: 1px solid yellow;
+}
+
+.flex-child:first-child {
+    margin-right: 0px;
+}
