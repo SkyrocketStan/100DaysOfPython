@@ -1,5 +1,7 @@
 import requests
+import spotipy
 from bs4 import BeautifulSoup
+from spotipy.oauth2 import SpotifyOAuth
 
 date = input(
     "Which year do you want to travel to? Type the date in this format "
@@ -10,3 +12,18 @@ soup = BeautifulSoup(response.text, 'html.parser')
 song_names_raw = soup.find_all("h3", class_="a-no-trucate")
 song_names = [song.getText().strip() for song in song_names_raw]
 print(song_names)
+
+SPOTIPY_CLIENT_ID = "YOUR-SPOTIPY_CLIENT_ID"
+SPOTIPY_CLIENT_SECRET = "YOUR-SPOTIPY_CLIENT_SECRET"
+SPOTIPY_REDIRECT_URI = "http://localhost:8888/callback"  # here you need to put the same URI in your Spotify account
+
+sp = spotipy.Spotify(
+    auth_manager=SpotifyOAuth(
+        scope="user-library-read playlist-modify-private",
+        redirect_uri=SPOTIPY_REDIRECT_URI,
+        client_id=SPOTIPY_CLIENT_ID,
+        client_secret=SPOTIPY_CLIENT_SECRET,
+        show_dialog=False,
+        cache_path="token.txt"
+    )
+)
