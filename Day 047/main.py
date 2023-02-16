@@ -8,14 +8,14 @@ AL = "en-US"
 
 
 def get_html_data():
-     headers = {"Accept-Language": AL, "User-Agent": UA}
-     response = requests.get(URL, headers=headers)
-     response.raise_for_status()
-     return response.text
+    headers = {"Accept-Language": AL, "User-Agent": UA}
+    response = requests.get(URL, headers=headers)
+    response.raise_for_status()
+    return response.text
 
 
 data = get_html_data()
 soup = BeautifulSoup(data, "lxml")
 price = soup.find(name="span", class_="a-offscreen") \
-     .getText().strip().replace("$", "")
+    .getText().strip().replace("$", "")
 print(price)
