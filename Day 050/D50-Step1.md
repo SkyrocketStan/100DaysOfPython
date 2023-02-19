@@ -1,7 +1,8 @@
 # Step 1 - Setup your account on Tinder
 
-1. If you don't already have an account on Tinder, set one up now. Make sure you can sign in to your account using
-   Facebook or Google. <br><br>If you don't want to use your own details, ask a friend who is on Tinder or just set up a new Facebook account and
+1. If you don't already have an account on [Tinder](https://tinder.com/), set one up now. Make sure you can sign in to your account using
+   Facebook or Google.
+<br><br>If you don't want to use your own details, ask a friend who is on Tinder or just set up a new [Facebook](https://www.facebook.com/) account and
 use an AI-generated image from https://www.thispersondoesnotexist.com/
 <br><br>HINT: You can hit refresh on thispersondoesnotexist to generate new random images.
 
