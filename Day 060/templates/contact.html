@@ -8,7 +8,11 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="page-heading">
+                    {% if msg_sent: %}
+                    <h1>Successfully sent your message</h1>
+                    {% else: %}
                     <h1>Contact Me</h1>
+                    {% endif %}
                     <span class="subheading">Have questions? I have answers.</span>
                 </div>
             </div>
