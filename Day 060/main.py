@@ -2,8 +2,8 @@ import requests
 from flask import Flask, render_template, request
 
 posts = requests.get("https://api.npoint.io/43644ec4f0013682fc0d").json()
-app = Flask(__name__)
 
+app = Flask(__name__)
 
 @app.route('/')
 def get_all_posts():
@@ -24,19 +24,16 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
+    if request.method == "POST":
+        data = request.form
+        print(data["name"])
+        print(data["email"])
+        print(data["phone"])
+        print(data["message"])
+        return "<h1>Successfully sent your message</h1>"
     return render_template("contact.html")
-
-
-@app.route("/form-entry", methods=["POST"])
-def receive_data():
-    data = request.form
-    print(data["name"])
-    print(data["email"])
-    print(data["phone"])
-    print(data["message"])
-    return "<h1>Successfully sent your message</h1>"
 
 
 if __name__ == "__main__":
