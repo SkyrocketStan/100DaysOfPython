@@ -7,7 +7,12 @@
 <body>
 <div class="container">
     <h1>Login</h1>
-    <!-- This is where our form will go. -->
+    <form action="{{ url_for('login') }}" method="POST">
+        {{ form.csrf_token }}
+        {{ form.email.label }} {{ form.email(size=30) }}
+        {{ form.password.label }} {{ form.password(size=30) }}
+        <input type="submit" value="Log In">
+    </form>
 </div>
 </body>
 </html>
