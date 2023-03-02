@@ -1,9 +1,12 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Access Denied</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Access Denied{% endblock %}
+{% block styling %}
+{{ super() }}
+h1 {
+color:red;
+}
+{% endblock %}
+{% block content %}
 <div class="container">
     <h1>Access Denied </h1>
     <iframe allowFullScreen class="giphy-embed" frameBorder="0"
@@ -12,5 +15,4 @@
         <a href="https://giphy.com/gifs/cheezburger-funny-dog-fails-1xeVd1vr43nHO">via
             GIPHY</a></p>
 </div>
-</body>
-</html>
+{% endblock %}
