@@ -1,6 +1,14 @@
 {% extends 'bootstrap/base.html' %}
 
-{% block title %}Restaurants{% endblock %}
+{% block styles %}
+{{ super() }}
+<link href="{{ url_for('static', filename='css/styles.css') }}"
+      rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}All Cafes{% endblock %}
+
 
 {% block content %}
 
@@ -11,12 +19,20 @@
             <h1>All Cafes</h1>
 
             <table class="table">
-                <!-- This is where you will write the code to render a Bootstrap
-                Table that contains all the information from the
-                cafe-data.csv file. -->
-            </table>
 
-            <p><a href="#">Return to index page</a></p>
+                {% for row in cafes %}
+                <tr>
+                    {% for item in row %}
+                    {% if item[0:4] == "http" %}
+                    <td><a href="{{ item }}">Maps Link</a></td>
+                    {% else %}
+                    <td>{{ item }}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+            <p><a href="{{ url_for('home') }}">Return to index page</a></p>
 
         </div>
     </div>

@@ -1,6 +1,15 @@
 {% extends 'bootstrap/base.html' %}
 
+{% block styles %}
+
+{{ super() }}
+<link href="{{ url_for('static', filename='css/styles.css') }}"
+      rel="stylesheet">
+{% endblock %}
+
+
 {% block title %}Coffee and Wifi{% endblock %}
+
 
 {% block content %}
 <div class="jumbotron text-center">
@@ -11,7 +20,8 @@
         <p>You've found the right place! Checkout my collection of cafes with
             data on power socket availability, wifi speed and coffee
             quality.</p>
-        <a class="btn btn-warning btn-lg" href="#" role="button">Show Me!</a>
+        <a class="btn btn-warning btn-lg" href="{{ url_for('cafes') }}"
+           role="button">Show Me!</a>
     </div>
 </div>
 

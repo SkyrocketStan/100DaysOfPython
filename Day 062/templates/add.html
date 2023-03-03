@@ -9,7 +9,7 @@
 
             <h1>Add a new cafe into the database</h1>
 
-            <!-- This is where your WTForm will go -->
+            {{ wtf.quick_form(form, novalidate=True) }}
 
             <p class="space-above"><a href="#">See all cafes</a></p>
 
