@@ -39,7 +39,8 @@
                 <p class="review">"{{movie.review}}"</p>
                 <p class="overview">{{movie.description}}</p>
 
-                <a class="button" href="#">Update</a>
+                <a class="button"
+                   href="{{ url_for('rate_movie', id=movie.id) }}">Update</a>
                 <a class="button delete-button" href="#">Delete</a>
 
             </div>
