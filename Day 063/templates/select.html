@@ -1,6 +1,4 @@
 {% extends 'bootstrap/base.html' %}
-
-#****************Add this line ************
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block styles %}
@@ -13,14 +11,18 @@
       rel="stylesheet">
 {% endblock %}
 
-{% block title %}Add Movie{% endblock %}
+{% block title %}Select Movie{% endblock %}
 
 {% block content %}
-<div class="content">
-    <h1 class="heading">Add a Movie</h1>
+<div class="container">
+  <h1 class="heading">Select Movie</h1>
 
-    #****************Add this line ************
-    {{ wtf.quick_form(form, novalidate=True) }}
+  {% for movie in options: %}
+  <p>
+    <a href="{{ url_for('find_movie', id=movie.id) }} ">{{ movie.title }} -
+      {{movie.release_date}}</a>
+  </p>
+  {% endfor %}
 
 </div>
 {% endblock %}
