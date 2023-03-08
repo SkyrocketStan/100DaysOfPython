@@ -12,13 +12,21 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="page-heading">
+
+          # IF statement to differentiate Add and Edit
+          {% if is_edit: %}
+          <h1>Edit Post</h1>
+          {% else: %}
           <h1>New Post</h1>
+          {% endif %}
+
           <span class="subheading">You're going to make a great blog post!</span>
         </div>
       </div>
     </div>
   </div>
 </header>
+
 
 <div class="container">
   <div class="row">
