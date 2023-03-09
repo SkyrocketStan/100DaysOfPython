@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for, request
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 
@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-##CREATE TABLE IN DB
+# CREATE TABLE IN DB
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), unique=True)
@@ -27,8 +27,20 @@ def home():
     return render_template("index.html")
 
 
-@app.route('/register')
+@app.route('/register', methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        new_user = User(
+            email=request.form.get('email'),
+            name=request.form.get('name'),
+            password=request.form.get('password')
+        )
+
+        db.session.add(new_user)
+        db.session.commit()
+
+        return redirect(url_for("secrets"))
+
     return render_template("register.html")
 
 
