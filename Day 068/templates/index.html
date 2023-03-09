@@ -3,12 +3,12 @@
 
 <div class="box">
     <h1>Flask Authentication</h1>
-
+    {% if not logged_in: %}
     <a class="btn btn-primary btn-block btn-large"
        href="{{ url_for('login') }}">Login</a>
     <a class="btn btn-secondary btn-block btn-large"
        href="{{ url_for('register') }}">Register</a>
-
+    {% endif %}
 </div>
 
 {% endblock %}
