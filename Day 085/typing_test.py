@@ -16,16 +16,17 @@ class TypingSpeedTest:
         self.words = self.text.split()
 
         # Create widgets
-        self.text_label = tk.Label(self.root_window, text=self.text, font=("Helvetica", 14))
+        default_font = ("Helvetica", 14)
+        self.text_label = tk.Label(self.root_window, text=self.text, font=default_font)
         self.text_label.pack(pady=20)
 
-        self.input_entry = tk.Entry(self.root_window, font=("Helvetica", 14))
+        self.input_entry = tk.Entry(self.root_window, font=default_font)
         self.input_entry.pack(pady=20)
 
-        self.start_button = tk.Button(self.root_window, text="Start", font=("Helvetica", 14), command=self.start_test)
+        self.start_button = tk.Button(self.root_window, text="Start", font=default_font, command=self.start_test)
         self.start_button.pack(pady=20)
 
-        self.result_label = tk.Label(self.root_window, text="", font=("Helvetica", 14))
+        self.result_label = tk.Label(self.root_window, text="", font=default_font)
         self.result_label.pack(pady=20)
 
         self.root_window.bind("<Return>", self.check_input)
